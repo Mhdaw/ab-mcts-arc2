@@ -1,0 +1,37 @@
+[project]
+name = "ab-mcts-arc2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "huggingface-hub>=0.29.3",
+    "hydra-core>=1.3.2",
+    "ipywidgets>=8.1.5",
+    "jupyter>=1.1.1",
+    "litellm>=1.63.3",
+    "python-dotenv>=1.0.1",
+    "tqdm>=4.67.1",
+    "treequest[abmcts-m]>=0.1.0",
+    "tenacity>=8.2.2",
+    "anthropic[bedrock]>=0.52.0",
+    "black>=25.1.0",
+    "google-genai>=1.17.0",
+    "seaborn>=0.13.2",
+    "fire>=0.7.0",
+    "joblib>=1.5.1",
+    "networkx>=3.5",
+    "pygraphviz>=1.14",
+]
+
+[tool.uv.sources]
+treequest = { git = "https://github.com/SakanaAI/treequest.git" }
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.10",
+]
+
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
