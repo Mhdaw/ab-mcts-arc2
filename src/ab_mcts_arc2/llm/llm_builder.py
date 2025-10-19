@@ -15,6 +15,8 @@ def build_model(model_name: str) -> Model:
         model_cls = GeminiAPIModel
     elif model_name in OPENAI_PRICING:
         model_cls = OpenAIAPIModel
+    elif model_name.startswith("local-"):
+        model_cls = OpenAIAPIModel
     else:
         raise ValueError(f"Unsupported model {model_name}")
 
