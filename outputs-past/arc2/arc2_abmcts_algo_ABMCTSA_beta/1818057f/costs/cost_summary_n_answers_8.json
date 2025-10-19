@@ -1,0 +1,6 @@
+{
+  "total_cost": 155993.0,
+  "cost_by_model": {
+    "openai/gpt-oss-120b": 155993.0
+  }
+}

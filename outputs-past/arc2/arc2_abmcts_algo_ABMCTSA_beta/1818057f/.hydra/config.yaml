@@ -1,0 +1,12 @@
+task_id: 1818057f
+prompt_version: null
+max_num_nodes: 250
+checkpoint_path: null
+models:
+- name: openai/gpt-oss-120b
+  temperature: 1.0
+algo:
+  class_name: ABMCTSA
+  params:
+    model_selection_strategy: stack
+    dist_type: beta

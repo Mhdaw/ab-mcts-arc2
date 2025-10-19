@@ -1,0 +1,17 @@
+{
+  "total_time": 103.9340558052063,
+  "total_time_minutes": 1.732234263420105,
+  "total_time_hours": 0.028870571057001748,
+  "time_by_model": {
+    "openai/gpt-oss-120b": 103.9240608215332
+  },
+  "time_by_model_minutes": {
+    "openai/gpt-oss-120b": 1.7320676803588868
+  },
+  "node_times": [
+    37.07652497291565,
+    66.84753584861755
+  ],
+  "avg_node_time": 51.9620304107666,
+  "avg_node_time_minutes": 0.8660338401794434
+}

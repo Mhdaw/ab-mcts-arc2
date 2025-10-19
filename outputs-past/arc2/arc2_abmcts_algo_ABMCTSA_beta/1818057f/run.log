@@ -1,0 +1,76 @@
+2025-10-18 07:04:54,642 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:07:11,102 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:07:29,685 - INFO - Current total cost: $13428.0
+2025-10-18 07:07:29,685 - INFO - Current total time: 37.08 seconds
+2025-10-18 07:07:29,685 - INFO -   openai/gpt-oss-120b cost: $13428.0
+2025-10-18 07:07:29,685 - INFO -   openai/gpt-oss-120b time: 37.08 seconds
+2025-10-18 07:07:31,368 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:07:31,369 - INFO - Retrying request to /chat/completions in 20.000000 seconds
+2025-10-18 07:08:18,235 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:08:36,535 - INFO - Current total cost: $30982.0
+2025-10-18 07:08:36,535 - INFO - Current total time: 103.93 seconds
+2025-10-18 07:08:36,535 - INFO -   openai/gpt-oss-120b cost: $30982.0
+2025-10-18 07:08:36,535 - INFO -   openai/gpt-oss-120b time: 103.92 seconds
+2025-10-18 07:09:37,070 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:09:38,056 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:09:38,057 - INFO - Retrying request to /chat/completions in 40.000000 seconds
+2025-10-18 07:10:41,510 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:11:00,170 - INFO - Current total cost: $73914.0
+2025-10-18 07:11:00,170 - INFO - Current total time: 247.57 seconds
+2025-10-18 07:11:00,170 - INFO -   openai/gpt-oss-120b cost: $73914.0
+2025-10-18 07:11:00,170 - INFO -   openai/gpt-oss-120b time: 247.55 seconds
+2025-10-18 07:11:01,079 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:11:01,080 - INFO - Retrying request to /chat/completions in 21.000000 seconds
+2025-10-18 07:11:41,663 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:12:00,267 - INFO - Current total cost: $87984.0
+2025-10-18 07:12:00,267 - INFO - Current total time: 307.67 seconds
+2025-10-18 07:12:00,267 - INFO -   openai/gpt-oss-120b cost: $87984.0
+2025-10-18 07:12:00,267 - INFO -   openai/gpt-oss-120b time: 307.64 seconds
+2025-10-18 07:12:02,273 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:12:02,274 - INFO - Retrying request to /chat/completions in 20.000000 seconds
+2025-10-18 07:13:04,495 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:13:24,180 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:13:24,181 - INFO - Retrying request to /chat/completions in 21.000000 seconds
+2025-10-18 07:14:02,647 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:14:22,382 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:14:22,382 - INFO - Retrying request to /chat/completions in 21.000000 seconds
+2025-10-18 07:15:34,602 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:15:34,621 - INFO - Current total cost: $155993.0
+2025-10-18 07:15:34,621 - INFO - Current total time: 522.02 seconds
+2025-10-18 07:15:34,621 - INFO -   openai/gpt-oss-120b cost: $155993.0
+2025-10-18 07:15:34,621 - INFO -   openai/gpt-oss-120b time: 521.99 seconds
+2025-10-18 07:15:36,328 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:15:36,329 - INFO - Retrying request to /chat/completions in 39.000000 seconds
+2025-10-18 07:16:41,274 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-18 07:17:00,951 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:00,954 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 1.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199955, Requested 5373. Please try again in 38m21.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:02,360 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:02,361 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 2.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199952, Requested 5373. Please try again in 38m20.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:04,767 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:04,769 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 4.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199946, Requested 5373. Please try again in 38m17.808s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:09,168 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:09,169 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199936, Requested 5373. Please try again in 38m13.488s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:21,257 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:21,259 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199911, Requested 5373. Please try again in 38m2.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:31,166 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:31,167 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199885, Requested 5373. Please try again in 37m51.456s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:40,336 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:40,337 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199864, Requested 5373. Please try again in 37m42.384s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:49,010 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:49,011 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199844, Requested 5373. Please try again in 37m33.744s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:17:57,941 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:17:57,942 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199823, Requested 5373. Please try again in 37m24.672s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:18:06,668 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:18:06,669 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199803, Requested 5373. Please try again in 37m16.032s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:18:16,861 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:18:16,861 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199779, Requested 5373. Please try again in 37m5.664s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:18:25,755 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:18:25,757 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199759, Requested 5373. Please try again in 36m57.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:18:34,680 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:18:34,681 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199738, Requested 5373. Please try again in 36m47.952s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:18:43,368 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:18:43,369 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199718, Requested 5373. Please try again in 36m39.312s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:18:52,287 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:18:52,288 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199697, Requested 5373. Please try again in 36m30.24s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.
+2025-10-18 07:19:01,729 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-18 07:19:01,731 - INFO - Retrying ab_mcts_arc2.llm.openai_api.try_generate in 8.0 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k1twf343ercva93xk4ezcfj4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199675, Requested 5373. Please try again in 36m20.735999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}.

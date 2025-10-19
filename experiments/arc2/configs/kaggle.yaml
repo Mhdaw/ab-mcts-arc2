@@ -1,0 +1,15 @@
+task_id: 0
+prompt_version: null
+max_num_nodes: 10
+checkpoint_path: null
+models:
+  - name: "local-qwen3-4b"
+    temperature: 0.7
+algo:
+  class_name: "ABMCTSA"
+  params:
+    model_selection_strategy: "stack"
+
+hydra:
+  run:
+    dir: outputs/arc/arc_algo_${algo.class_name}_task_${task_id}_${now:%Y-%m-%d_%H-%M-%S}
