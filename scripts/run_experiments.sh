@@ -7,7 +7,7 @@ ALGO_CLASS_NAME=ABMCTSA
 DIST_TYPE=beta
 
 # Number of parallel jobs
-N_JOBS=3
+N_JOBS=1
 INDICES_FILE="experiments/arc2/arc_agi_2_eval_short.txt"
 
 # Track execution time
@@ -24,7 +24,7 @@ cat $INDICES_FILE | parallel -j $N_JOBS "
     mkdir -p outputs/arc2/arc2_${EXP_ID}_algo_${ALGO_CLASS_NAME}_${DIST_TYPE}/{}
     
     # Build the command to run
-    CMD='uv run experiments/arc2/run.py \\
+    CMD='python experiments/arc2/run.py \\
         --config-name ${CONFIG_NAME} \\
         max_num_nodes=${MAX_NUM_NODES} \\
         task_id={} \\

@@ -16,7 +16,8 @@ from tenacity import (
 from ab_mcts_arc2.llm.llm_interface import Model
 
 # Reference: https://openai.com/api/pricing/
-PRICING = {
+
+OPENAI = {
     "gpt-4o": {
         "prompt_tokens": 2.5 / 1e6,
         "completion_tokens": 10.0 / 1e6,
@@ -77,6 +78,9 @@ PRICING = {
         "prompt_tokens": 1.1 / 1e6,
         "completion_tokens": 4.4 / 1e6,
     },
+}
+
+OPENROUTER = {
     # until 2025-02-08 16:00 (UTC)
     "deepseek-chat": {
         # "prompt_cache_hit_tokens": 0.014 / 1e6,  # 0.07 / 1e6
@@ -123,6 +127,47 @@ PRICING = {
         "completion_tokens": 0.6 / 1e6,
     },
 }
+
+CEREBRAS = {
+    "gpt-oss-120b": {
+        "prompt_tokens": 0.35 / 1e6,
+        "completion_tokens": 0.75 / 1e6,
+    },
+    "qwen-3-32b": {
+        "prompt_tokens": 0.35 / 1e6,
+        "completion_tokens": 0.75 / 1e6,
+    },
+    "qwen-3-235b-a22b-instruct-2507": {
+        "prompt_tokens": 0.35 / 1e6,
+        "completion_tokens": 0.75 / 1e6,
+    },
+
+}
+
+GROQ = {
+    "openai/gpt-oss-120b": {
+        "prompt_tokens": 0.35 / 1e6,
+        "completion_tokens": 0.75 / 1e6,
+    },
+    "openai/gpt-oss-20b": {
+        "prompt_tokens": 0.35 / 1e6,
+        "completion_tokens": 0.75 / 1e6,
+    },
+
+}
+
+LOCAL = {}
+
+
+PRICING = {**OPENAI, **OPENROUTER, **CEREBRAS, **GROQ, **LOCAL}
+
+BASE_URLS = {
+    "openrouter": "https://openrouter.ai/api/v1",
+    "deepseek": "https://api.deepseek.com",
+    "cerebras": "https://api.cerebras.ai/v1",
+    "groq": "https://api.groq.com/openai/v1",
+    "local": "http://localhost:8000/v1"
+}
 OPENAI_REASONING_MODELS = set(
     [
         model_name
@@ -130,6 +175,7 @@ OPENAI_REASONING_MODELS = set(
         if model_name.startswith("o1")
         or model_name.startswith("o3")
         or model_name.startswith("o4")
+        or "oss" in model_name
     ]
 )
 
@@ -193,7 +239,7 @@ def try_generate(api_model: "OpenAIAPIModel", messages, temperature, request_sam
             messages=messages,
             model=to_openai_client_model_name(api_model.model),
             n=request_samples,
-            reasoning_effort=os.environ.get("OPENAI_REASONING_EFFORT", "medium"),
+            reasoning_effort=os.environ.get("OPENAI_REASONING_EFFORT", "high"),
         )
     else:
         response = api_model.client.chat.completions.create(
@@ -218,22 +264,20 @@ class OpenAIAPIModel(Model):
         self,
         model: str = "gpt-4o-2024-08-06",
     ) -> None:
-        if model.startswith("deepseek"):
-            api_key = (
-                os.environ["DEEPSEEK_API_KEY"]
-                if "DEEPSEEK_API_KEY" in os.environ
-                else os.environ["OPENAI_API_KEY"]
-            )
-            self.client = OpenAI(base_url="https://api.deepseek.com", api_key=api_key)
+        api_key = os.environ.get("OPENAI_API_KEY")
+        if api_key is None:
+            raise ValueError("OPENAI_API_KEY environment variable is not set.")
+        
+        if model.startswith("gpt-oss-") or model.startswith("qwen-"):
+            self.client = OpenAI(api_key=api_key, base_url=BASE_URLS["cerebras"])
         elif model.startswith("openrouter_"):
-            api_key = (
-                os.environ["OPENROUTER_API_KEY"]
-                if "OPENROUTER_API_KEY" in os.environ
-                else os.environ["OPENAI_API_KEY"]
-            )
-            self.client = OpenAI(
-                base_url="https://openrouter.ai/api/v1", api_key=api_key
-            )
+            self.client = OpenAI(api_key=api_key, base_url=BASE_URLS["openrouter"])
+        elif model.startswith("deepseek-"):
+            self.client = OpenAI(api_key=api_key, base_url=BASE_URLS["deepseek"])
+        elif model.startswith("openai/gpt-oss-"):
+            self.client = OpenAI(api_key=api_key, base_url=BASE_URLS["groq"])
+        elif model.startswith("local"):
+            self.client = OpenAI(api_key=api_key, base_url=BASE_URLS["local"])
         else:
             self.client = OpenAI()
 
@@ -241,14 +285,11 @@ class OpenAIAPIModel(Model):
 
     def generate(
         self, messages: list[dict[str, str]], temperature: float = 0.6
-    ) -> tuple[str, float]:
+    ) -> tuple[str, tuple[float, float]]:
         chat_completion = try_generate(self, messages, temperature)
         usage_data = chat_completion.usage.model_dump()
 
-        cost = (
-            PRICING[self.model_name]["prompt_tokens"] * usage_data["prompt_tokens"]
-            + PRICING[self.model_name]["completion_tokens"]
-            * usage_data["completion_tokens"]
-        )
+        input_cost = usage_data["prompt_tokens"]
+        output_cost = usage_data["completion_tokens"]
 
-        return chat_completion.choices[0].message.content, cost
+        return chat_completion.choices[0].message.content, (input_cost,output_cost)

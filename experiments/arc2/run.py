@@ -24,9 +24,9 @@ sys.path.append(str(Path(__file__)))
 from prompt import BaselinePrompt
 from utils import NodeState, is_power_of_two
 
-sys.setrecursionlimit(
-    20000
-)  # Example: Increase limit to 20000.  Choose a sensible value.
+# sys.setrecursionlimit(
+#     20000
+# )  # Example: Increase limit to 20000.  Choose a sensible value.
 
 
 logger = logging.getLogger(__name__)
@@ -67,7 +67,8 @@ def generate_fn(
         ]
 
     generation, cost = call_llm(model_name, model_temp, messages)
-
+    input_cost,output_cost = cost
+    cost = output_cost
     # Update cost info
     total_cost += cost
     if model_name not in cost_by_model:
@@ -82,10 +83,12 @@ def generate_fn(
         :-3
     ]  # up to milliseconds
 
-    log_txt = llm_log_dir / f"log_{timestamp}_{model_name}.txt"
+    safe_model_name = model_name.replace("/", "_")
+
+    log_txt = llm_log_dir / f"log_{timestamp}_{safe_model_name}.txt"
     log_txt.write_text(
         json.dumps(
-            {"model": model_name, "cost": cost, "result": dataclasses.asdict(result)},
+            {"model": model_name, "input_tokens": input_cost, "output_tokens": output_cost, "result": dataclasses.asdict(result)},
             indent=4,
         )
     )  # save cost and result
@@ -152,6 +155,28 @@ def main(cfg: DictConfig) -> None:
     algo: tq.Algorithm = algo_cls(**algo_config["params"])
 
     save_dir = Path(hydra.core.hydra_config.HydraConfig.get().runtime.output_dir)
+
+    logging.getLogger().handlers.clear()
+    
+    # Get the root logger
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO) # Set the lowest level to capture
+
+    # Create a formatter
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
+    # Create a file handler to save logs to a file
+    log_file_path = save_dir / "run.log"
+    file_handler = logging.FileHandler(log_file_path)
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    # Create a stream handler to print logs to the console
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setLevel(logging.INFO)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
     for subdir in ["llm_logs", "costs", "checkpoints"]:
         if not (save_dir / subdir).exists():
             (save_dir / subdir).mkdir()
@@ -205,7 +230,7 @@ def main(cfg: DictConfig) -> None:
             node_execution_time = time.time() - node_start_time
             node_times.append(node_execution_time)
 
-        if n_answers % 10 == 0 or is_power_of_two(n_answers):
+        if n_answers % 5 == 0 or is_power_of_two(n_answers):
             with open(
                 save_dir / "checkpoints" / f"checkpoint_n_answers_{n_answers}.pkl", "wb"
             ) as f:
@@ -217,10 +242,10 @@ def main(cfg: DictConfig) -> None:
             total_time = time.time() - start_time
 
             # Log accumulated cost and time every 10 steps
-            logger.info(f"Current total cost: ${total_cost:.6f}")
+            logger.info(f"Current total cost: ${total_cost}")
             logger.info(f"Current total time: {total_time:.2f} seconds")
             for model, model_cost in cost_by_model.items():
-                logger.info(f"  {model} cost: ${model_cost:.6f}")
+                logger.info(f"  {model} cost: ${model_cost}")
             for model, model_time in time_by_model.items():
                 logger.info(f"  {model} time: {model_time:.2f} seconds")
 
@@ -261,9 +286,9 @@ def main(cfg: DictConfig) -> None:
 
     # Log the final total cost and time
     logger.info("===== Final Cost Summary =====")
-    logger.info(f"Total LLM cost: ${total_cost:.6f}")
+    logger.info(f"Total LLM cost: ${total_cost}")
     for model, model_cost in cost_by_model.items():
-        logger.info(f"  {model}: ${model_cost:.6f}")
+        logger.info(f"  {model}: ${model_cost}")
 
     logger.info("===== Final Time Summary =====")
     logger.info(

@@ -27,14 +27,19 @@ This repository provides an implementation for solving the [ARC-AGI-2](https://g
    sudo apt install parallel graphviz graphviz-dev
    ```
 
-3. Install dependencies using [`uv`](https://github.com/astral-sh/uv):
+3. Install dependencies using pip:
    ```bash
-   uv sync
+   pip install -e .
+   ```
+   
+   For development dependencies:
+   ```bash
+   pip install -e ".[dev]"
    ```
    
    If you are a Mac user and encountered an error in `pygraphviz` installation, please set env vars accordingly:
    ```bash
-   CFLAGS="-I $(brew --prefix graphviz)/include" LDFLAGS="-L $(brew --prefix graphviz)/lib" uv sync
+   CFLAGS="-I $(brew --prefix graphviz)/include" LDFLAGS="-L $(brew --prefix graphviz)/lib" pip install -e .
    ```
 
 ## Running Experiments

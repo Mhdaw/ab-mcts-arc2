@@ -1,7 +1,7 @@
 import re
 from abc import abstractmethod
 from dataclasses import dataclass
-from typing import Iterable, List, Optional
+from typing import Iterable, List, Optional, Sequence
 
 from ab_mcts_arc2.model_base import GenerationRequest as BaseGenerationRequest
 from ab_mcts_arc2.model_base import GenerationResult as BaseGenerationResult
@@ -41,7 +41,7 @@ class Model(BaseModel):
 
     @abstractmethod
     def generate(
-        self, requests: Image.Sequence[GenerationRequest]
+        self, requests: Sequence[GenerationRequest]
     ) -> Iterable[GenerationResult]:
         raise NotImplementedError()
 
