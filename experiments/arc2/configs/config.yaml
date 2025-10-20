@@ -3,8 +3,8 @@ prompt_version: null
 max_num_nodes: 10
 checkpoint_path: null
 models:
-  - name: "gemini-2.5-flash-lite"
-    temperature: 0.6
+  - name: "openai/gpt-oss-120b"
+    temperature: 1.0
 algo:
   class_name: "ABMCTSA"
   params:
@@ -13,4 +13,3 @@ algo:
 hydra:
   run:
     dir: outputs/arc/arc_algo_${algo.class_name}_task_${task_id}_${now:%Y-%m-%d_%H-%M-%S}
-  
