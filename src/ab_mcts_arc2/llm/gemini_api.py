@@ -99,40 +99,12 @@ class GeminiAPIModel(Model):
 
     def generate(
         self, messages: list[dict[str, str]], temperature: float = 0.7
-    ) -> tuple[str, float]:
+    ) -> tuple[str, tuple[float, float]]:
 
         chat_completion = self.call_api(messages, temperature)
 
         prompt_token_count = chat_completion.usage_metadata.prompt_token_count
         candidates_token_count = chat_completion.usage_metadata.candidates_token_count
 
-        prompt_price = 0
-        candidates_price = 0
-        if self.model_name == "gemini-2.5-pro-preview-05-06":
-            if prompt_token_count <= 200_000:
-                prompt_price += (
-                    prompt_token_count * PRICING[self.model_name]["prompt_token_count"]
-                )
-            else:
-                prompt_price += 200_000 * PRICING[self.model_name]["prompt_token_count"]
-                prompt_price += (
-                    (prompt_token_count - 200_000)
-                    * PRICING[self.model_name]["prompt_token_count"]
-                    * 2
-                )
-            if candidates_token_count <= 200_000:
-                candidates_price += (
-                    candidates_token_count
-                    * PRICING[self.model_name]["candidates_token_count"]
-                )
-            else:
-                candidates_price += (
-                    200_000 * PRICING[self.model_name]["candidates_token_count"]
-                )
-                candidates_price += (
-                    (candidates_token_count - 200_000)
-                    * PRICING[self.model_name]["candidates_token_count"]
-                    * 1.5
-                )
-        total_price = prompt_price + candidates_price
-        return chat_completion.candidates[0].content.parts[0].text, total_price
+        total_cost = (prompt_token_count, candidates_token_count)
+        return chat_completion.candidates[0].content.parts[0].text, total_cost

@@ -11,7 +11,7 @@ def build_model(model_name: str) -> Model:
 
     if model_name in CLAUDE_PRICING:
         model_cls = ClaudeBedrockAPIModel
-    elif model_name in GEMINI_PRICING:
+    elif model_name.startswith("gemini"):
         model_cls = GeminiAPIModel
     elif model_name in OPENAI_PRICING:
         model_cls = OpenAIAPIModel
