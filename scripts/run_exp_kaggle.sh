@@ -7,8 +7,8 @@ ALGO_CLASS_NAME=ABMCTSA
 DIST_TYPE=beta
 
 # Number of parallel jobs
-N_JOBS=16
-INDICES_FILE="experiments/arc2/arc_agi_2_eval_full.txt"
+N_JOBS=3
+INDICES_FILE="experiments/arc2/arc_agi_2_eval_short.txt"
 
 # Track execution time
 start_time=$(date +%s)
